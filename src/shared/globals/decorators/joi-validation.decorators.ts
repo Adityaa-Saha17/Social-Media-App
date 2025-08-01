@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { JoiRequestValidationError } from '@globals/helpers/error-handlers';
 import { Request } from 'express';
 import { ObjectSchema } from 'joi';
@@ -16,6 +15,8 @@ export function joiValidator(schema: ObjectSchema): IJoiDecorator {
       if(error?.details){
         throw new JoiRequestValidationError(error.details[0].message);
       }
+      return originalMethod.apply(this, args);
     };
+    return descriptor;
   };
 }
