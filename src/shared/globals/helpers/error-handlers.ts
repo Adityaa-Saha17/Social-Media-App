@@ -66,7 +66,7 @@ export class ForbiddenError extends CustomError {
   }
 }
 
-export class InternalServerError extends CustomError {
+export class ServerError extends CustomError {
   statusCode = HTTP_STATUS.INTERNAL_SERVER_ERROR;
   status = 'error';
 
